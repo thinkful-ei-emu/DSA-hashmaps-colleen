@@ -38,9 +38,12 @@ class HashMap {
   get(key){
     const index = this._findSlot(key);
     if(this._hashTable[index]=== undefined){
-      throw new Error('Key error')
+      //throw new Error('Key error')
+      return null
     }
+    
     return this._hashTable[index].value;
+   
   }
 
   delete(key){
@@ -48,7 +51,8 @@ class HashMap {
     const slot = this._hashTable[index];
 
     if(slot === undefined){
-      throw new Error('Key error')
+     // throw new Error('Key error')
+      return undefined
     }
     //mark slot as deleted
     //on resizing clear out deleted items
@@ -71,7 +75,6 @@ class HashMap {
   }
 
   _resize(size){
-    console.log('RESIZING')
     //recreates hashmap with new larger capacity
     const oldSlots = this._hashTable;
     this._capacity = size;
